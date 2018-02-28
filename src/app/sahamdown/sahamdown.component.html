@@ -1,0 +1,147 @@
+<app-home></app-home>
+<div class="container-full">
+    <tabset>
+        <tab heading='Bear'>
+            <div class="alert-danger">{{errorMessage}}</div>
+
+            <table class="table table-bordered table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>ID Ticker</th>            
+                        <th>DT Trx</th>  
+                        <th>Day1</th>
+                        <th>Day2</th>
+                        <th>Day3</th>
+                        <th>Day4</th>
+                        <th>Day5</th>
+                        <th>Day10</th>
+                        <th>Day20</th>
+                        <th>Day50</th>
+                        <th>Day100</th>
+                        <th>Vol Trx</th>
+                        <th>Vol Prc</th>
+                        <th> % (Day5-Day1)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of sahamdown">
+                        <td>{{data.id_ticker}}</td>
+                        <td>{{data.dt_trx}}</td>
+                        <td style="color:red; font-weight: bold;">{{data.ma1 | number:0}}</td>
+                        <td>{{data.ma2 | number:0}}</td>
+                        <td>{{data.ma3 | number:0}}</td>
+                        <td>{{data.ma4 | number:0}}</td>
+                        <td>{{data.ma5 | number:0}}</td>
+                        <td>{{data.ma10 | number:0}}</td>
+                        <td>{{data.ma20 | number:0}}</td>
+                        <td>{{data.ma50 | number:0}}</td>
+                        <td>{{data.ma100 | number:0}}</td>
+                        <td>{{data.vol_trx | number:0}}</td>
+                        <td>{{data.vol_prc | number:0}}</td>
+                        <td>{{data.down_p}}</td>
+            <!-- <td style="width: 70px;">
+                <i class="glyphicon glyphicon-edit pointer"
+                   (click)="saham_up(data.id_ticker)" title="Edit"></i>
+                <i class="glyphicon glyphicon-trash pointer"    
+                    (click)="delete(data.id_ticker)" title="Delete"></i>
+                <i class="glyphicon glyphicon-user pointer" 
+                    (click)="image(data.id_ticker)" title="Image"></i>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</tab>
+<tab>
+    <ng-template tabHeading>Bear 3</ng-template>
+    <table class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
+                <th>ID Ticker</th>                
+                <th>Day1</th>
+                <th>Day2</th>
+                <th>Day3</th>
+                <th>Day4</th>
+                <th>Vol Trx</th>
+                <th>Vol Prc</th>
+                <th> % (Day4-Day1)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of sahamdown3">
+                <td>{{data.id_ticker}}</td>                
+                <td style="color:red; font-weight: bold;">{{data.ma1 | number:0}}</td>
+                <td>{{data.ma2| number:0}}</td>
+                <td>{{data.ma3| number:0}}</td>
+                <td>{{data.ma4| number:0}}</td>
+                <td>{{data.vol_trx| number:0}}</td>
+                <td>{{data.vol_prc| number:0}}</td>
+                <td>{{data.down_p| number:0}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- <div class="col-xs-12 col-12">
+        <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
+        [boundaryLinks]="true"></pagination>
+    </div> -->
+
+</tab>
+<tab>
+    <ng-template tabHeading>Bear 2</ng-template>
+    <table class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
+                <th>ID Ticker</th>            
+                <th>Day1</th>
+                <th>Day2</th>
+                <th>Day3</th>
+                <th>Day10</th>
+                <th>Vol Trx</th>
+                <th>Vol Prc</th>
+                <th> % (Day3-Day1)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of sahamdown2">
+                <td>{{data.id_ticker}}</td>            
+                <td style="color:red; font-weight: bold;">{{data.ma1| number:0}}</td>
+                <td>{{data.ma2| number:0}}</td>
+                <td>{{data.ma3| number:0}}</td>
+                <td>{{data.ma10| number:0}}</td>
+                <td>{{data.vol_trx| number:0}}</td>
+                <td>{{data.vol_prc| number:0}}</td>
+                <td>{{data.down_p}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</tab>
+<tab>
+    <ng-template tabHeading>Bear 1</ng-template>
+    <table class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
+                <th>ID Ticker</th>            
+                <th>Day1</th>
+                <th>Day2</th>                
+                <th>Vol Trx</th>
+                <th>Vol Prc</th>
+                <th> % (Day2-Day1)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of sahamdown1">
+                <td>{{data.id_ticker}}</td>            
+                <td style="color:red; font-weight: bold;">{{data.ma1| number:0}}</td>
+                <td>{{data.ma2| number:0}}</td>
+                <td>{{data.vol_trx| number:0}}</td>
+                <td>{{data.vol_prc| number:0}}</td>
+                <td>{{data.down_p}}</td>            
+            </tr>
+        </tbody>
+    </table>
+    
+</tab>
+</tabset>
+</div>
+

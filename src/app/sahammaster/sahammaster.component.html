@@ -1,0 +1,59 @@
+<app-home></app-home>
+<div class="container-full">
+	
+	
+	<table class="table table-bordered table-hover table-sm">
+		<thead>
+			<tr>
+				<th>ID Ticker</th>                
+				<th>Company Name</th>                
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr *ngFor="let data of sahammaster.slice((bigCurrentPage -1) * bigTotalItems, bigCurrentPage * bigTotalItems)"> -->                                                     
+				<tr *ngFor="let data of sahammaster">
+					<td>{{data.id_ticker}}</td>                
+					<td>{{data.nm_ticker}}</td>                
+				</tr>
+			</tbody>
+		</table>	
+
+		<div class="row">
+			<div class="col-xs-12 col-12" >
+				<pagination (pageChanged)="pageChanged($event)" [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm" [boundaryLinks]="true" (click)="setPage(bigCurrentPage,$event)"></pagination>
+			</div>
+		</div>
+
+		<form class="form-inline">
+			<div class="form-group mb-2">
+				<label for="zipfile" class="sr-only">File Date</label>
+				<input type="text" class="form-control" [(ngModel)]="selected" [ngModelOptions]="{standalone:
+			true}"  placeholder="File">
+			</div>			
+			<button type="submit" class="btn btn-primary mb-2" (click)="dwFile(selected)">Download</button>
+		</form>
+
+
+
+		<!-- <pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{totalPages}}</pre> -->
+
+		<!-- <div ng-include="'http://www.idxdata.co.id/Download_Data/Daily/Stock_Summary/'"></div> -->
+		<!-- <div w3-include-html="http://www.idxdata.co.id/Download_Data/Daily/Stock_Summary/"></div> -->
+
+		<!-- <div class="row">
+			<div class="col-xs-12 col-12 col-md-4 form-group">
+				<input type="text"
+				class="form-control"
+				[minDate]="minDate"
+				[maxDate]="maxDate"
+				#dp="bsDatepicker"
+				bsDatepicker [(bsValue)]="bsValue">
+			</div>
+		</div>
+
+
+		<a target="_self" (click)="saveFile()">Export</a>
+
+		<a download="SS180119.zip" target="_self" href="http://www.idxdata.co.id/Download_Data/Daily/Stock_Summary/SS180119.zip">SS180119.zip</a> -->
+</div>
+

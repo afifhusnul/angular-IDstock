@@ -1,0 +1,41 @@
+<app-home></app-home>
+<div class="container-full">
+	<tabset>
+		<tab heading='Top Volume'>
+			<table class="table table-bordered table-hover table-sm">
+				<thead>
+					<tr>
+						<th>ID Ticker</th>            
+						<th>DT Trx</th>  
+						<th>MA1</th>
+						<th>MA2</th>
+						<th>UP %</th>
+						<th>Trx Amount</th>
+						<th>Trx Vol</th>						
+						<th>Vol2</th>
+						<th>Vol3</th>
+						<th>Vol4</th>
+						<th>Vol5</th>
+						<th>Avg Vol</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let data of sahamtopvol">
+						<td>{{data.id_ticker}}</td>
+						<td>{{data.dt_trx}}</td>
+						<td style="font-weight: bold;">{{data.ma1 | number:0}}</td>
+						<td>{{data.ma2 | number:0}}</td>
+						<td>{{data.up_p | number:0}}</td>
+						<td>{{data.vol_prc | number:0}}</td>
+						<td>{{data.last_vol | number:0}}</td>
+						<td>{{data.vol2 | number:0}}</td>
+						<td>{{data.vol3 | number:0}}</td>
+						<td>{{data.vol4 | number:0}}</td>
+						<td>{{data.vol5 | number:0}}</td>                        
+						<td>{{data.vol_5day | number:0}}</td>                        
+					</tr>
+				</tbody>
+			</table>
+		</tab>
+	</tabset>
+</div>

@@ -1,0 +1,146 @@
+<app-home></app-home>
+<div class="container-full">		
+	<!-- <button type="button" class="btn btn-primary" (click)="showModal()">Render auto-shown modal</button> -->
+	<br>
+	<br>
+	<tabset>
+		<tab heading='Reversal Up'>
+			
+			<div class="alert-danger">{{errorMessage}}</div>
+			
+			<table class="table table-bordered table-hover table-sm">
+				<thead>
+					<tr>
+						<th>ID Ticker</th>
+						<th>DT Trx</th>
+						<th>Day1</th>
+						<th>Day2</th>
+						<th>Day3</th>
+						<th>Day4</th>
+						<th>Day5</th>
+						<th>Day10</th>
+						<th>Day20</th>
+						<th>Vol Trx</th>
+						<th>Vol Prc</th>
+						<th> % (Day5-Day1)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let data of sahamrup">					
+						<td><a (click)="showModal(data.id_ticker)"><i class="fa fa-info-circle">-{{data.id_ticker}} </i></a></td>
+						<td>{{data.dt_trx}}</td>
+						<td style="color:green; font-weight: bold;">{{data.ma1| number:0}}</td>
+						<td>{{data.ma2| number:0}}</td>
+						<td>{{data.ma3| number:0}}</td>
+						<td>{{data.ma4| number:0}}</td>
+						<td>{{data.ma5| number:0}}</td>
+						<td>{{data.ma10| number:0}}</td>
+						<td>{{data.ma20| number:0}}</td>
+						<td>{{data.vol_trx| number:0}}</td>
+						<td>{{data.vol_prc| number:0}}</td>
+						<td>{{data.up_p}}</td>            
+					</tr>
+				</tbody>
+			</table>
+			
+		</tab>
+		<tab heading='Reversal Down'>
+			
+			<table class="table table-bordered table-hover table-sm">
+				<thead>
+					<tr>
+						<th>ID Ticker</th>						
+						<th>Day1</th>
+						<th>Day2</th>
+						<th>Day3</th>
+						<th>Day4</th>
+						<th>Day5</th>
+						<th>Day10</th>
+						<th>Day20</th>
+						<th>Vol Trx</th>
+						<th>Vol Prc</th>
+						<th> % (Day5-Day1) </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let data of sahamrdown">					
+						<td><a (click)="showModal(data.id_ticker)">{{data.id_ticker}}</a></td>						
+						<td style="color:red; font-weight: bold;">{{data.ma1}}</td>
+						<td>{{data.ma2| number:0}}</td>
+						<td>{{data.ma3| number:0}}</td>
+						<td>{{data.ma4| number:0}}</td>
+						<td>{{data.ma5| number:0}}</td>
+						<td>{{data.ma10| number:0}}</td>
+						<td>{{data.ma20| number:0}}</td>
+						<td>{{data.vol_trx| number:0}}</td>
+						<td>{{data.vol_prc| number:0}}</td>
+						<td>{{data.up_p}}</td>            
+					</tr>
+				</tbody>
+			</table>
+		</tab>
+	</tabset>
+</div>
+
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title pull-left">Ticker Info</h4>
+				<!-- <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button> -->
+			</div>
+			<div class="modal-body" >
+				<form>
+					<div class="form-group row">
+						<label  class="col-6 col-md-4 col-form-label">ID Ticker</label>
+						<div class="col-12 col-sm-6 col-md-8">
+							<input type="text" readonly class="form-control" [(ngModel)]="sahamressup.id_ticker" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-6 col-md-4 col-form-label">Company name</label>
+						<div class="col-12 col-sm-6 col-md-8">
+							<input type="text" readonly class="form-control" [(ngModel)]="sahamressup.nm_ticker" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-6 col-md-4 col-form-label">Last Price </label>
+						<div class="col-12 col-sm-6 col-md-8">
+							<input type="text" readonly class="form-control"  [(ngModel)]="sahamressup.ma1" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-6 col-md-4 col-form-label">Last Vol Trx</label>
+						<div class="col-12 col-sm-6 col-md-8">
+							<input type="text" readonly class="form-control"  [(ngModel)]="sahamressup.last_trx_vol" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-6 col-md-4 col-form-label">Last Prc Trx</label>
+						<div class="col-12 col-sm-6 col-md-8">
+							<input type="text" readonly class="form-control"  [(ngModel)]="sahamressup.last_trx_prc" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-6 col-md-4 col-form-label">Last Vol</label>
+						<div class="col-12 col-sm-6 col-md-8">
+							<input type="text" readonly class="form-control"  [(ngModel)]="sahamressup.r1" [ngModelOptions]="{standalone: true}">
+						</div>
+					</div>
+
+
+				</form>				
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info btn-sm" (click)="hideModal()"> Close!</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<app-home></app-home>
+<div class="container-full">
+	<br>
+
+	<pre class="card card-block card-header">{{myForm.value.states | json}}</pre>
+
+	<form class="form-inline" >
+		<div class="form-group mx-sm-3 mb-2">
+			<!-- <label for="Ticker" class="sr-only">Ticker</label> -->
+			<!-- <input type="text" class="form-control" id="ticker" placeholder="ADHI"> -->
+			<input [(ngModel)]="selected" [typeahead]="states" [ngModelOptions]="{standalone:
+			true}" type="text" class="form-control" >
+		</div>
+		<button type="submit" class="btn btn-primary mb-2">Search!</button>
+	</form>
+
+	<form class="form-inline" >
+		<div class="form-group mx-sm-3 mb-2">			
+			<input  type="text" class="form-control" placeholder="search word" >
+		</div>
+		<button type="submit" class="btn btn-primary mb-2">Search!</button>
+	</form>
+
+	<br>
+	<p>You Selected <b>{{ selected }}</b></p>
+	<br>
+	<table class="table table-bordered table-hover table-sm">
+		<thead>
+			<tr>
+				<th>Month</th>                
+				<th>Price Min</th>
+				<th>DT Min</th>
+				<th>Price Max</th>
+				<th>DT Max</th>
+				<th> % </th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr *ngFor="let data of sahammaster.slice((bigCurrentPage -1) * bigTotalItems, bigCurrentPage * bigTotalItems)"> -->                                                     
+				<!-- <tr *ngFor="let data of sahammaster">
+				<td>{{data.id_ticker}}</td>
+				<td>{{data.nm_ticker}}</td>   
+			</tr>-->              
+		</tbody>
+	</table>
+</div>
